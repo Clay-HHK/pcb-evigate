@@ -1,0 +1,9 @@
+backend: stub
+model: deterministic-evidence-stub-v4
+temperature: 0
+workers: 4
+cache_file: cache/mllm_outputs/stub.jsonl
+low_q_reg_threshold: 0.78
+weak_residual_threshold: 0.22
+strong_residual_threshold: 0.35
+topology_change_threshold: 0.0

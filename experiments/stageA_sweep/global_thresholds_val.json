@@ -1,0 +1,192 @@
+{
+  "0": {
+    "0.05": {
+      "appearance": 0.49958037689784085,
+      "topology_1": 0.0,
+      "combined_1": 0.5082780193789578,
+      "topology_2": 0.0,
+      "combined_2": 0.49996185244525826,
+      "topology_3": 0.0,
+      "combined_3": 0.4998702983138781
+    },
+    "0.02": {
+      "appearance": 0.6230869001297017,
+      "topology_1": 0.0,
+      "combined_1": 0.7184863050278477,
+      "topology_2": 0.0,
+      "combined_2": 0.6749675745784696,
+      "topology_3": 0.0,
+      "combined_3": 0.655893797207599
+    },
+    "0.01": {
+      "appearance": 0.7157701991302358,
+      "topology_1": 1.0,
+      "combined_1": 1.0,
+      "topology_2": 0.0,
+      "combined_2": 0.7448538948653392,
+      "topology_3": 0.0,
+      "combined_3": 0.7424887464713512
+    },
+    "0.005": {
+      "appearance": 0.7432822156099794,
+      "topology_1": 1.0,
+      "combined_1": 1.0,
+      "topology_2": 1.0,
+      "combined_2": 1.0,
+      "topology_3": 1.0,
+      "combined_3": 1.0
+    }
+  },
+  "1": {
+    "0.05": {
+      "appearance": 0.5295185778591592,
+      "topology_1": 0.0,
+      "combined_1": 0.5784084840161746,
+      "topology_2": 0.0,
+      "combined_2": 0.561898222323949,
+      "topology_3": 0.0,
+      "combined_3": 0.5593194476234074
+    },
+    "0.02": {
+      "appearance": 0.6645304036011291,
+      "topology_1": 0.0,
+      "combined_1": 0.7425040054932479,
+      "topology_2": 0.0,
+      "combined_2": 0.7071030746929122,
+      "topology_3": 0.0,
+      "combined_3": 0.7024490730144197
+    },
+    "0.01": {
+      "appearance": 0.7205004959182116,
+      "topology_1": 1.0,
+      "combined_1": 1.0,
+      "topology_2": 0.0,
+      "combined_2": 0.8674143587396048,
+      "topology_3": 0.0,
+      "combined_3": 0.7767452506294347
+    },
+    "0.005": {
+      "appearance": 0.7497978179598688,
+      "topology_1": 1.0,
+      "combined_1": 1.0,
+      "topology_2": 1.0,
+      "combined_2": 1.0,
+      "topology_3": 1.0,
+      "combined_3": 1.0
+    }
+  },
+  "2": {
+    "0.05": {
+      "appearance": 0.5227893492027161,
+      "topology_1": 0.0,
+      "combined_1": 0.551094834821088,
+      "topology_2": 0.0,
+      "combined_2": 0.5377584496833753,
+      "topology_3": 0.0,
+      "combined_3": 0.5336079957274739
+    },
+    "0.02": {
+      "appearance": 0.6728770885786222,
+      "topology_1": 0.0,
+      "combined_1": 0.7349507896543832,
+      "topology_2": 0.0,
+      "combined_2": 0.7054703593499657,
+      "topology_3": 0.0,
+      "combined_3": 0.6984359502555886
+    },
+    "0.01": {
+      "appearance": 0.7432974746318761,
+      "topology_1": 0.0,
+      "combined_1": 0.820706492713817,
+      "topology_2": 0.0,
+      "combined_2": 0.7506218051422904,
+      "topology_3": 0.0,
+      "combined_3": 0.7499961852445258
+    },
+    "0.005": {
+      "appearance": 0.7499961852445258,
+      "topology_1": 1.0,
+      "combined_1": 1.0,
+      "topology_2": 1.0,
+      "combined_2": 1.0,
+      "topology_3": 0.0,
+      "combined_3": 0.9730525673304341
+    }
+  },
+  "3": {
+    "0.05": {
+      "appearance": 0.4985580224307622,
+      "topology_1": 0.0,
+      "combined_1": 0.5151140611886778,
+      "topology_2": 0.0,
+      "combined_2": 0.5007858396276799,
+      "topology_3": 0.0,
+      "combined_3": 0.49996185244525826
+    },
+    "0.02": {
+      "appearance": 0.6188448920424201,
+      "topology_1": 0.0,
+      "combined_1": 0.6868848706797894,
+      "topology_2": 0.0,
+      "combined_2": 0.6608834973678187,
+      "topology_3": 0.0,
+      "combined_3": 0.6540169375143053
+    },
+    "0.01": {
+      "appearance": 0.684092469672694,
+      "topology_1": 1.0,
+      "combined_1": 1.0,
+      "topology_2": 0.0,
+      "combined_2": 0.7448538948653392,
+      "topology_3": 0.0,
+      "combined_3": 0.7419699397268635
+    },
+    "0.005": {
+      "appearance": 0.7392996108949417,
+      "topology_1": 1.0,
+      "combined_1": 1.0,
+      "topology_2": 1.0,
+      "combined_2": 1.0,
+      "topology_3": 1.0,
+      "combined_3": 1.0
+    }
+  },
+  "4": {
+    "0.05": {
+      "appearance": 0.5437705043106736,
+      "topology_1": 0.0,
+      "combined_1": 0.5749904631113145,
+      "topology_2": 0.0,
+      "combined_2": 0.5573662928206302,
+      "topology_3": 0.0,
+      "combined_3": 0.5504997329671169
+    },
+    "0.02": {
+      "appearance": 0.703898680094606,
+      "topology_1": 0.0,
+      "combined_1": 0.7424734874494545,
+      "topology_2": 0.0,
+      "combined_2": 0.7307545586327916,
+      "topology_3": 0.0,
+      "combined_3": 0.7186999313344015
+    },
+    "0.01": {
+      "appearance": 0.7450370031280995,
+      "topology_1": 0.0,
+      "combined_1": 0.7915922789349202,
+      "topology_2": 0.0,
+      "combined_2": 0.7497978179598688,
+      "topology_3": 0.0,
+      "combined_3": 0.7483634699015793
+    },
+    "0.005": {
+      "appearance": 0.7499046311131456,
+      "topology_1": 1.0,
+      "combined_1": 1.0,
+      "topology_2": 1.0,
+      "combined_2": 1.0,
+      "topology_3": 0.0,
+      "combined_3": 0.8000457770656901
+    }
+  }
+}

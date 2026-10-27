@@ -1,0 +1,20 @@
+__pycache__/
+*.pyc
+# Large binaries are distributed via GitHub Releases, not git
+*.pt
+cache/rtdetr_r18_fold0/best/model.safetensors
+data/raw/DeepPCB/
+# Regenerated evidence cards
+experiments/rq1_evidence/cards*/
+experiments/rq2_correction/cards/
+experiments/rq4_robustness/rtdetr_cards/
+cache/evidence_cards/
+cache/huggingface/
+cache/mllm_outputs/tmp/
+paper/*.aux
+paper/*.log
+paper/*.xdv
+paper/*.fls
+paper/*.fdb_latexmk
+paper/*.blg
+.env

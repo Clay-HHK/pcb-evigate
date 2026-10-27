@@ -1,0 +1,22 @@
+{
+  "verdict": "correct",
+  "candidate_type": "original_fp",
+  "source": "DET",
+  "true_defect_present": false,
+  "true_class": "normal",
+  "model_output": {
+    "defect_present": false,
+    "predicted_class": "normal",
+    "reference_reliability": "high",
+    "appearance_pattern": [
+      "none"
+    ],
+    "topology_pattern": [
+      "none"
+    ],
+    "evidence_strength": 3,
+    "reason_codes": [
+      "NO_SUPPORT"
+    ]
+  }
+}

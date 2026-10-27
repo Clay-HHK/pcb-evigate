@@ -1,0 +1,23 @@
+{
+  "verdict": "incorrect",
+  "candidate_type": "original_tp",
+  "source": "DET",
+  "true_defect_present": true,
+  "true_class": "open",
+  "model_output": {
+    "defect_present": true,
+    "predicted_class": "spur",
+    "reference_reliability": "high",
+    "appearance_pattern": [
+      "extra_material"
+    ],
+    "topology_pattern": [
+      "extra_branch"
+    ],
+    "evidence_strength": 3,
+    "reason_codes": [
+      "A_EXTRA",
+      "T_BRANCH"
+    ]
+  }
+}

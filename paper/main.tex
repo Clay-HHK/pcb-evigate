@@ -1,0 +1,55 @@
+\documentclass[conference]{IEEEtran}
+
+\usepackage[UTF8,scheme=plain]{ctex}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{url}
+
+\newcommand{\missingfigure}[1]{%
+  \fbox{\parbox[c][3.8cm][c]{0.92\textwidth}{\centering #1}}%
+}
+
+\title{基于正常模板与多模态大模型的 PCB 缺陷检测结果复核方法\\
+{\large Reference-Guided Multimodal Verification for PCB Defect Detection}}
+\author{\IEEEauthorblockN{匿名作者}}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+针对 PCB 表面缺陷检测器在细粒度线路变化、正常纹理扰动和相似缺陷类别下出现的误报、
+漏检与错分类问题，本文提出一种基于正常模板与多模态大模型的检测结果复核方法。
+方法联合基础检测器的语义候选与正常模板的差异候选构建统一候选集合，
+使系统既能复核已有检测结果，也能验证检测器未提出的潜在漏检区域；
+在此基础上由学习式复检门控制大模型的调用预算，
+由外部证据驱动的接受门约束修改动作是否执行。
+在 DeepPCB 上按模板组隔离的五折交叉验证表明，
+基础检测器留下 1644 个可纠错错误，其中漏检占 57.6\%。
+不加门控时大模型复检的有害修正率达到 0.9326，最终 F1 由 0.9118 降至 0.8660；
+引入双门控后正确检测保留率为 0.9998，最终 F1 与基础检测器无统计差异。
+复检门在 5\% 调用预算下定位 46.5\% 的可纠错错误，随机策略仅为 3.2\%。
+证据消融显示正常模板是唯一稳定的增益来源，
+而外观差异图与拓扑差异图作为大模型视觉输入未带来增益。
+接受上界分析进一步表明，即使完美采纳大模型的全部提议，
+最终 F1 也仅比基础检测器高 0.0025，
+说明当前多模态大模型在工业细粒度缺陷验证上的判断质量是系统的主要瓶颈。
+\end{abstract}
+
+\begin{IEEEkeywords}
+PCB 缺陷检测，检测结果复核，正常模板参照，多模态大模型，选择性预测，风险门控
+\end{IEEEkeywords}
+
+\input{sections/01_intro}
+\input{sections/02_related}
+\input{sections/03_problem}
+\input{sections/04_candidates}
+\input{sections/05_gating}
+\input{sections/06_experiments}
+\input{sections/07_conclusion}
+
+\bibliographystyle{IEEEtran}
+\bibliography{refs}
+
+\end{document}

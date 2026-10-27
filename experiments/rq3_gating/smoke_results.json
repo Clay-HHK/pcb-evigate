@@ -1,0 +1,70 @@
+{
+  "passed": true,
+  "candidates": 206,
+  "review_training_samples": 206,
+  "acceptance_training_samples": {
+    "keep": 26,
+    "remove": 17,
+    "relabel": 39,
+    "add": 18
+  },
+  "acceptance_training_labels": {
+    "keep": {
+      "positive": 23,
+      "negative": 3
+    },
+    "remove": {
+      "positive": 1,
+      "negative": 16
+    },
+    "relabel": {
+      "positive": 1,
+      "negative": 38
+    },
+    "add": {
+      "positive": 0,
+      "negative": 18
+    }
+  },
+  "curve": [
+    {
+      "budget_percent": 5,
+      "calls": 10,
+      "accepted": 0,
+      "f1_before": 0.7576791808873721,
+      "f1_after": 0.7576791808873721,
+      "f1_gain": 0.0,
+      "fpcr": 0.0,
+      "mdrr": 0.0,
+      "mcca": 0.0,
+      "tprr": 1.0,
+      "hcr": 0.0
+    },
+    {
+      "budget_percent": 20,
+      "calls": 41,
+      "accepted": 0,
+      "f1_before": 0.7576791808873721,
+      "f1_after": 0.7576791808873721,
+      "f1_gain": 0.0,
+      "fpcr": 0.0,
+      "mdrr": 0.0,
+      "mcca": 0.0,
+      "tprr": 1.0,
+      "hcr": 0.0
+    },
+    {
+      "budget_percent": 100,
+      "calls": 206,
+      "accepted": 1,
+      "f1_before": 0.7576791808873721,
+      "f1_after": 0.7602739726027397,
+      "f1_gain": 0.0025947917153675837,
+      "fpcr": 0.0,
+      "mdrr": 0.0,
+      "mcca": 0.08333333333333333,
+      "tprr": 1.0,
+      "hcr": 0.0
+    }
+  ]
+}

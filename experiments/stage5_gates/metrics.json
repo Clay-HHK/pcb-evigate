@@ -1,0 +1,41 @@
+{
+  "review": {
+    "logistic": {
+      "average_precision": 0.18394742021274424,
+      "roc_auc": 0.7909029683248545
+    },
+    "lightgbm": {
+      "average_precision": 0.43106245604275956,
+      "roc_auc": 0.922713545969
+    }
+  },
+  "acceptance": {
+    "remove": {
+      "logistic": {
+        "average_precision": 0.47096331056455787
+      },
+      "lightgbm": {
+        "average_precision": 0.6390481841062774
+      }
+    },
+    "relabel": {
+      "logistic": {
+        "average_precision": 0.013070932820397053
+      },
+      "lightgbm": {
+        "average_precision": 0.013070932820397053
+      }
+    },
+    "add": {
+      "logistic": {
+        "average_precision": 0.1630971816827732
+      },
+      "lightgbm": {
+        "average_precision": 0.24765603991970211
+      }
+    }
+  },
+  "warnings": [
+    "警告：评价 fold 3 的 relabel 接受门训练样本 2464，正样本 0，退化为固定阈值加安全规则"
+  ]
+}

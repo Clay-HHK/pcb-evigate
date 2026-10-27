@@ -1,0 +1,40 @@
+{
+  "candidate_id": "13000195_b00",
+  "candidate_type": "original_tp",
+  "source": "BOTH",
+  "q_reg": 0.8432261992608556,
+  "area": 962.6188147477806,
+  "true_defect_present": true,
+  "A2": {
+    "defect_present": true,
+    "predicted_class": "spurious_copper",
+    "reference_reliability": null,
+    "appearance_pattern": [
+      "extra_material"
+    ],
+    "topology_pattern": [
+      "new_component"
+    ],
+    "evidence_strength": 3,
+    "reason_codes": [
+      "A_EXTRA",
+      "T_COMPONENT"
+    ]
+  },
+  "A3": {
+    "defect_present": null,
+    "predicted_class": "uncertain",
+    "reference_reliability": "low",
+    "appearance_pattern": [
+      "uncertain"
+    ],
+    "topology_pattern": [
+      "uncertain"
+    ],
+    "evidence_strength": 0,
+    "reason_codes": [
+      "REF_BAD",
+      "NO_SUPPORT"
+    ]
+  }
+}

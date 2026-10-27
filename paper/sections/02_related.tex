@@ -1,0 +1,55 @@
+\section{相关工作}
+\label{sec:related}
+
+\subsection{PCB 缺陷检测与公开数据集}
+
+公开数据集推动了 PCB 缺陷检测从手工规则向数据驱动方法转变。DeepPCB 包含 1500 对已配准的正常模板与待检图像，并标注六类常见裸板缺陷。其原始检测器直接以图像对为输入\cite{tang2019deeppcb}。Huang 和 Wei 发布的数据集包含 10 个模板和 1386 张合成缺陷图像。该数据集还提供检测、分类与配准任务所需信息\cite{huang2019hripcb}。这两类数据均保留配对正常模板，适合研究配对比较，但图像规模和缺陷生成方式与真实产线仍有差距。
+
+面向真实制造条件的数据集补充了更多场景。DsPCBSD+ 收集产线 AOI 图像，并按缺陷成因、位置与形态细分类型\cite{lv2024dspcbsd}。PCB-IND 保留工业成像中的非均匀照明、长尾分布和跨尺度缺陷\cite{yan2026pcbind}。工业异常检测数据集 VisA 覆盖 12 类对象，并提供图像级与像素级标注，其中包含 PCB 类别\cite{zou2022visa}。这些数据扩大了场景多样性，但并非都为每张待检图提供严格对应的正常模板。本文的主要实验基于 DeepPCB 的配对结构，结论不外推到跨模板或跨产线场景。
+
+\subsection{正常模板比较与变化检测}
+
+正常模板参与的 PCB 检测并非新的问题设定。DeepPCB 联合编码正常模板和待检图，通过组金字塔池化预测缺陷\cite{tang2019deeppcb}。Auto-VRS 在 AOI 之后执行快速电路比较，再用深度网络判断候选是真缺陷还是伪缺陷，形成后置验证流程\cite{deng2018autovrs}。CSS-Net 使用标准板作为正常模板，与候选图像构成孪生输入。该方法以代价敏感阈值减少真实缺陷被判为伪缺陷的风险\cite{miao2021cssnet}。这些工作说明，检测后复核和正常模板二次分类本身不能构成本文的独立创新。
+
+ChangeChip 将作为正常模板的 golden PCB 与待检板配准，再以无监督变化检测得到的变化区域提示缺陷\cite{fridman2021changechip}。RefDiffNet 在检测器主干之前加入轻量参考比较模块，将结构变化编码为增强后的检测输入。该方法在 DeepPCB 与 HRIPCB 上测试了模块的可插拔性\cite{edula2026refdiffnet}。这些工作分别代表独立变化检测和检测前参考增强。本文采用检测器后置复核：基础检测器先产生检测候选，差异候选补充漏检假设。多模态验证器只判断候选，接受门决定是否修改基础输出。外观差异图与拓扑图作为视觉证据未证明相对 A2 的稳定增量，最终系统已移除这两类视觉输入。
+
+\subsection{工业异常检测中的多模态大模型}
+
+AnomalyGPT 通过异常数据构造、视觉解码器和提示学习增强 MLLM 对局部工业异常的感知\cite{gu2024anomalygpt}。VMAD 将视觉异常知识和细粒度局部特征注入 MLLM，用于零样本检测、定位与解释\cite{deng2024vmad}。EMIT 采用面向困难样本的 GRPO 训练，以领域数据和热图引导工业异常识别\cite{guan2025emit}。这类方法主要改造模型本体，说明通用 MLLM 对微小工业异常的视觉能力仍需专门适配。
+
+基准研究直接报告了 MLLM 的能力边界。MMAD 将工业异常检查拆分为识别、分类、定位、描述和分析等子任务，并指出现有 MLLM 与工业要求之间仍有差距\cite{jiang2025mmad}。Anomaly-OV 通过异常视觉 token 和特征匹配强化细粒度异常感知\cite{xu2025anomalyov}。UniPCB 面向开放式 PCB 质量检查构建统一视觉语言基准，并报告通用模型在领域任务上的不足\cite{sun2026unipcb}。DifferAD-R1 采用正常模板与待检图的双图差异引导，将工业异常定位表述为差异 grounding 问题\cite{wang2026differadr1}。“正常模板加 MLLM”因此也不属于本文的创新边界。本文把 MLLM 放在已有检测器之后，由复检门控制调用。接受门和安全规则约束修改，研究对象是复核系统的成本与风险，而非新的异常感知模型。
+
+\subsection{选择性预测、校准与验证器可靠性}
+
+复核系统需要同时回答“哪些候选值得调用昂贵模型”和“模型给出的修改能否执行”。SelectiveNet 将拒识机制与预测器联合训练，以风险和覆盖率描述选择性预测\cite{geifman2019selectivenet}。温度缩放使用单一参数校准神经网络置信度，为检测器工作点和门控特征提供了简单基线\cite{guo2017calibration}。Learning to Defer 学习把样本交给下游专家的条件，并把系统性能而非单一模型精度作为优化对象\cite{mozannar2020defer}。Conformal Risk Control 则把共形方法扩展到单调损失的期望风险控制\cite{angelopoulos2024conformalrisk}。这些研究共同表明，覆盖率、风险和校准应当分开报告，模型的高置信度不能直接等同于动作安全。
+
+将 MLLM 用作多模态验证器还会引入新的偏差。研究发现，MLLM 会过度认可给定行为或既有答案，即同意偏差。先形成独立先验再验证候选可以缓解该问题\cite{andrade2026agreementbias}。自我修正综述指出，在缺少可靠外部反馈时，仅依赖模型自评不能稳定改正错误\cite{kamoi2024selfcorrection}。MLLM 的选择性预测研究也显示，外部视觉与几何信号比模型自报置信度更有判别力\cite{imran2026trustvlm}。本文不直接执行 MLLM 输出。接受门结合候选来源、配准质量、检测置信度和动作类型进行系统侧决策，硬安全规则保护已有正确检测。
+
+\subsection{本文定位与差异化矩阵}
+
+表~\ref{tab:positioning} 按实验结论界定本文位置。符号“有”只表示对应机制在该工作中明确出现，不将检测前增强、独立异常定位或开放式问答视为检测器后置修正。本文保留配对正常模板、差异候选和配准可靠性信号。显式差异视觉输入未证明相对 A2 的增量，因此已从最终系统中移除。
+
+\begin{table*}[t]
+  \centering
+  \caption{相关方法与本文最终系统的差异化定位}
+  \label{tab:positioning}
+  \scriptsize
+  \setlength{\tabcolsep}{3.2pt}
+  \renewcommand{\arraystretch}{1.18}
+  \begin{tabular}{lcccccccc}
+    \hline
+    方法 & 配对正常模板 & 显式差异证据 & 多模态验证 & 后置修正检测器 & 差异候选恢复漏检 & 配准质量阈值 & 复检门 & 接受门与安全规则 \\
+    \hline
+    DeepPCB\cite{tang2019deeppcb} & 有 & 无 & 无 & 无 & 无 & 无 & 无 & 无 \\
+    Auto-VRS\cite{deng2018autovrs} & 有 & 有 & 无 & 有 & 无 & 无 & 无 & 无 \\
+    CSS-Net\cite{miao2021cssnet} & 有 & 无 & 无 & 有 & 无 & 无 & 无 & 无 \\
+    ChangeChip\cite{fridman2021changechip} & 有 & 有 & 无 & 无 & 无 & 部分 & 无 & 无 \\
+    RefDiffNet\cite{edula2026refdiffnet} & 有 & 有 & 无 & 检测前增强 & 无 & 无 & 无 & 无 \\
+    UniPCB\cite{sun2026unipcb} & 部分任务 & 可选 & 检测与问答 & 无 & 无 & 无 & 无 & 无 \\
+    DifferAD-R1\cite{wang2026differadr1} & 有 & 有 & 定位 & 无 & 无 & 无 & 无 & 无 \\
+    \textbf{本文} & 有 & \textbf{未证明增量，已移除} & 有 & 有 & 有 & 有 & 有 & 有 \\
+    \hline
+  \end{tabular}
+\end{table*}
+
+本文不主张首次使用正常模板、差异图或 MLLM 复核。差异化来自三个可检验的系统机制：检测候选与差异候选形成双来源互补；复检门控制有限调用预算；接受门与安全规则约束 MLLM 的修改动作。实验同时给出适用边界。正常模板是稳定的视觉增益来源，显式外观与拓扑证据未证明稳定增量，去锚定输入也未显示优势。

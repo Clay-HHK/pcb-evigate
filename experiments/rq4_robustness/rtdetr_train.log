@@ -1,0 +1,13 @@
+Using a slow image processor as `use_fast` is unset and a slow processor was saved with this model. `use_fast=True` will be the default behavior in v4.52, even if the model was saved with a slow processor. This will result in minor differences in outputs. You'll still be able to use a slow processor with `use_fast=False`.
+Some weights of RTDetrForObjectDetection were not initialized from the model checkpoint at PekingU/rtdetr_r18vd and are newly initialized because the shapes did not match:
+- model.decoder.class_embed.0.bias: found shape torch.Size([80]) in the checkpoint and torch.Size([6]) in the model instantiated
+- model.decoder.class_embed.0.weight: found shape torch.Size([80, 256]) in the checkpoint and torch.Size([6, 256]) in the model instantiated
+- model.decoder.class_embed.1.bias: found shape torch.Size([80]) in the checkpoint and torch.Size([6]) in the model instantiated
+- model.decoder.class_embed.1.weight: found shape torch.Size([80, 256]) in the checkpoint and torch.Size([6, 256]) in the model instantiated
+- model.decoder.class_embed.2.bias: found shape torch.Size([80]) in the checkpoint and torch.Size([6]) in the model instantiated
+- model.decoder.class_embed.2.weight: found shape torch.Size([80, 256]) in the checkpoint and torch.Size([6, 256]) in the model instantiated
+- model.denoising_class_embed.weight: found shape torch.Size([81, 256]) in the checkpoint and torch.Size([7, 256]) in the model instantiated
+- model.enc_score_head.bias: found shape torch.Size([80]) in the checkpoint and torch.Size([6]) in the model instantiated
+- model.enc_score_head.weight: found shape torch.Size([80, 256]) in the checkpoint and torch.Size([6, 256]) in the model instantiated
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+RT-DETR-R18VD 完成，阈值=0.528016，验证 F1=0.821470

@@ -1,0 +1,8 @@
+{
+  "fold": 3,
+  "selection_split": "val",
+  "iou": 0.5,
+  "low_confidence": 0.001,
+  "working_confidence": 0.5803060531616211,
+  "validation_f1": 0.8609656777196044
+}

@@ -1,0 +1,67 @@
+fold,stage,status,timestamp,note
+0,dataset,running,2026-08-11T21:02:29+08:00,
+0,dataset,completed,2026-08-11T21:02:30+08:00,cache/detector_dataset/fold0/data.yaml
+1,dataset,running,2026-08-11T21:02:30+08:00,
+1,dataset,completed,2026-08-11T21:02:30+08:00,cache/detector_dataset/fold1/data.yaml
+2,dataset,running,2026-08-11T21:02:30+08:00,
+2,dataset,completed,2026-08-11T21:02:30+08:00,cache/detector_dataset/fold2/data.yaml
+3,dataset,running,2026-08-11T21:02:30+08:00,
+3,dataset,completed,2026-08-11T21:02:31+08:00,cache/detector_dataset/fold3/data.yaml
+4,dataset,running,2026-08-11T21:02:31+08:00,
+4,dataset,completed,2026-08-11T21:02:31+08:00,cache/detector_dataset/fold4/data.yaml
+2,train,running,2026-08-11T21:02:31+08:00,batch=-1
+3,train,running,2026-08-11T21:02:31+08:00,batch=-1
+1,train,running,2026-08-11T21:02:31+08:00,batch=-1
+0,train,running,2026-08-11T21:02:31+08:00,batch=-1
+2,train,completed,2026-08-11T21:34:07+08:00,batch=-1
+2,predict,running,2026-08-11T21:34:07+08:00,
+2,predict,completed,2026-08-11T21:34:20+08:00,returncode=0
+2,calibrate,running,2026-08-11T21:34:20+08:00,
+2,calibrate,completed,2026-08-11T21:34:30+08:00,returncode=0
+2,error_decompose,running,2026-08-11T21:34:30+08:00,
+2,error_decompose,completed,2026-08-11T21:34:33+08:00,returncode=0
+2,evaluate,running,2026-08-11T21:34:33+08:00,
+2,evaluate,completed,2026-08-11T21:34:46+08:00,returncode=0
+2,fold,completed,2026-08-11T21:34:46+08:00,epochs=85; batch=-1
+0,train,completed,2026-08-11T21:38:27+08:00,batch=-1
+0,predict,running,2026-08-11T21:38:27+08:00,
+0,predict,completed,2026-08-11T21:38:41+08:00,returncode=0
+0,calibrate,running,2026-08-11T21:38:41+08:00,
+1,train,completed,2026-08-11T21:38:47+08:00,batch=-1
+1,predict,running,2026-08-11T21:38:47+08:00,
+0,calibrate,completed,2026-08-11T21:38:52+08:00,returncode=0
+0,error_decompose,running,2026-08-11T21:38:52+08:00,
+0,error_decompose,completed,2026-08-11T21:38:55+08:00,returncode=0
+0,evaluate,running,2026-08-11T21:38:55+08:00,
+1,predict,completed,2026-08-11T21:39:05+08:00,returncode=0
+1,calibrate,running,2026-08-11T21:39:05+08:00,
+0,evaluate,completed,2026-08-11T21:39:09+08:00,returncode=0
+0,fold,completed,2026-08-11T21:39:09+08:00,epochs=100; batch=-1
+4,train,running,2026-08-11T21:39:09+08:00,batch=-1
+1,calibrate,completed,2026-08-11T21:39:15+08:00,returncode=0
+1,error_decompose,running,2026-08-11T21:39:15+08:00,
+1,error_decompose,completed,2026-08-11T21:39:18+08:00,returncode=0
+1,evaluate,running,2026-08-11T21:39:18+08:00,
+1,evaluate,completed,2026-08-11T21:39:32+08:00,returncode=0
+1,fold,completed,2026-08-11T21:39:32+08:00,epochs=99; batch=-1
+3,train,completed,2026-08-11T21:41:41+08:00,batch=-1
+3,predict,running,2026-08-11T21:41:41+08:00,
+3,predict,completed,2026-08-11T21:41:53+08:00,returncode=0
+3,calibrate,running,2026-08-11T21:41:53+08:00,
+3,calibrate,completed,2026-08-11T21:42:11+08:00,returncode=0
+3,error_decompose,running,2026-08-11T21:42:11+08:00,
+3,error_decompose,completed,2026-08-11T21:42:13+08:00,returncode=0
+3,evaluate,running,2026-08-11T21:42:13+08:00,
+3,evaluate,completed,2026-08-11T21:42:26+08:00,returncode=0
+3,fold,completed,2026-08-11T21:42:26+08:00,epochs=100; batch=-1
+4,train,completed,2026-08-11T22:08:28+08:00,batch=-1
+4,predict,running,2026-08-11T22:08:28+08:00,
+4,predict,completed,2026-08-11T22:08:42+08:00,returncode=0
+4,calibrate,running,2026-08-11T22:08:42+08:00,
+4,calibrate,completed,2026-08-11T22:08:52+08:00,returncode=0
+4,error_decompose,running,2026-08-11T22:08:52+08:00,
+4,error_decompose,completed,2026-08-11T22:08:55+08:00,returncode=0
+4,evaluate,running,2026-08-11T22:08:55+08:00,
+4,evaluate,completed,2026-08-11T22:09:08+08:00,returncode=0
+4,fold,completed,2026-08-11T22:09:08+08:00,epochs=100; batch=-1
+-1,summary,completed,2026-08-11T22:09:08+08:00,experiments/stage2/five_fold_summary.md

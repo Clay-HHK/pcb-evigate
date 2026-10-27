@@ -1,0 +1,16 @@
+pyramid_levels: 3
+ecc_iterations: 1000
+ecc_epsilon: 1.0e-6
+ecc_gaussian_size: 5
+max_translation: 32.0
+max_rotation_deg: 5.0
+weights:
+  ecc: 0.40
+  inlier: 0.25
+  chamfer: 0.20
+  transform: 0.15
+orb:
+  nfeatures: 2000
+  ratio: 0.75
+  ransac_reproj_threshold: 3.0
+

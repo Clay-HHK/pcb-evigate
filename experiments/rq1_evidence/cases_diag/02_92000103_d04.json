@@ -1,0 +1,40 @@
+{
+  "candidate_id": "92000103_d04",
+  "candidate_type": "original_fp",
+  "source": "DET",
+  "q_reg": 0.9757830311845201,
+  "area": 868.3151663970202,
+  "true_defect_present": false,
+  "A2": {
+    "defect_present": false,
+    "predicted_class": "normal",
+    "reference_reliability": null,
+    "appearance_pattern": [
+      "none"
+    ],
+    "topology_pattern": [
+      "none"
+    ],
+    "evidence_strength": 2,
+    "reason_codes": [
+      "NO_SUPPORT"
+    ]
+  },
+  "A3": {
+    "defect_present": true,
+    "predicted_class": "mousebite",
+    "reference_reliability": "medium",
+    "appearance_pattern": [
+      "missing_material",
+      "edge_notch"
+    ],
+    "topology_pattern": [
+      "none"
+    ],
+    "evidence_strength": 2,
+    "reason_codes": [
+      "A_MISSING",
+      "A_NOTCH"
+    ]
+  }
+}

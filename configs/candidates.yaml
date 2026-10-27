@@ -1,0 +1,36 @@
+# 阶段 A 推荐配置，基于固定种子 20260811 的 300 张 val 样本。
+# 上一轮 train 折推荐：threshold_mode=global_quantile, alpha=0.02, mad_k=3.0, dilate_kernel=3, open_kernel=1, close_kernel=5, min_area=150, max_area=8000, tolerance_px=3, merge_mode=max。
+threshold_mode: global_quantile
+alpha: 0.02
+mad_k: 3.0
+dilate_kernel: 3
+open_kernel: 1
+close_kernel: 5
+min_area: 150
+max_area: 8000
+tolerance_px: 3
+merge_mode: max
+# 扫描按未截断候选计成本，1000 仅防止生产接口提前截断扫描推荐结果。
+max_candidates_per_image: 1000
+center_expand_px: 8
+global_thresholds_by_fold:
+  '0':
+    appearance: 0.6230869001
+    topology: 0.0000000000
+    combined: 0.6558937972
+  '1':
+    appearance: 0.6645304036
+    topology: 0.0000000000
+    combined: 0.7024490730
+  '2':
+    appearance: 0.6728770886
+    topology: 0.0000000000
+    combined: 0.6984359503
+  '3':
+    appearance: 0.6188448920
+    topology: 0.0000000000
+    combined: 0.6540169375
+  '4':
+    appearance: 0.7038986801
+    topology: 0.0000000000
+    combined: 0.7186999313

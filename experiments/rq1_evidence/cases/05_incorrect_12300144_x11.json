@@ -1,0 +1,24 @@
+{
+  "verdict": "incorrect",
+  "candidate_type": "original_miss",
+  "source": "DIFF",
+  "true_defect_present": true,
+  "true_class": "short",
+  "model_output": {
+    "defect_present": true,
+    "predicted_class": "mousebite",
+    "reference_reliability": "medium",
+    "appearance_pattern": [
+      "missing_material",
+      "edge_notch"
+    ],
+    "topology_pattern": [
+      "none"
+    ],
+    "evidence_strength": 2,
+    "reason_codes": [
+      "A_MISSING",
+      "A_NOTCH"
+    ]
+  }
+}

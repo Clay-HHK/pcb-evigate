@@ -1,0 +1,120 @@
+\section{双来源候选与外观结构差异证据}
+\label{sec:candidates}
+
+基础检测器只能复核已经提出的目标，无法恢复没有检测候选的漏检。正常模板提供同一位置的无缺陷参照，可用于发现检测器未覆盖的变化区域。本章展开 M1 至 M5：先配准正常模板，再计算外观差异和拓扑差异，随后生成并融合候选。M7 依赖候选几何，因此也在本章说明。外观图和拓扑图用于候选生成，但不直接作为多模态验证器的视觉输入。第~\ref{subsec:evidence-card} 节分别报告阶段 C 主消融与阶段 B2 专门对照，说明这一取舍的依据。
+
+\subsection{模板配准与光度归一（M1）}
+\label{subsec:registration}
+
+设待检图为 $I$，与其模板编号对应的正常图为 $R$。虽然 DeepPCB 按成对文件提供二者，但文件配对不等于像素级对齐。若直接计算残差，轻微平移和旋转会在铜线边缘形成成片的双边响应，使正常结构被误认为缺陷。M1 因而采用粗到细的两级配准。粗级利用数据目录中的模板标识取得正确参考，并在灰度图像金字塔上估计全局运动；细级以增强相关系数（enhanced correlation coefficient, ECC）为目标优化轻量仿射变换：
+\begin{equation}
+  \hat{T}=\arg\max_T \operatorname{ECC}\bigl(I,W(R;T)\bigr),
+  \qquad R'=W(R;\hat{T}),
+  \label{eq:ecc-registration}
+\end{equation}
+其中 $W(\cdot;T)$ 表示将模板变换到待检图坐标系。仿射模型能够表达数据中的小幅平移、旋转和尺度变化，又比无约束单应模型更不容易把局部缺陷吸收到几何变换中。金字塔上层先处理低频结构和较大位移，下层再修正铜线边缘的亚像素残差。
+
+ECC 未收敛、相关性过低或变换参数越界时，系统回退到 ORB 特征匹配与 RANSAC 单应估计。该分支先在两图中提取二值描述子，以匹配点形成候选对应关系，再用 RANSAC 排除受缺陷和重复线路影响的外点。回退分支的目的不是用更高自由度持续追求较小残差，而是在 ECC 失效时恢复可用的全局对应。若两个分支均不可靠，系统保留基础检测结果，并禁止由模板差异触发自动新增、删除或改类，避免错误参考继续向后传播。
+
+阶段 0 的抽样核查显示，估计平移的绝对值最大为 $8.62$ px，近零变换仅占 $21/50$。DeepPCB 原图近似对齐，但未达到像素级预配准。M1 因而是差异计算前的必要步骤。完整数据实况见第~\ref{sec:experiments} 节。
+
+几何对齐后，本文使用中位数和中位绝对偏差（median absolute deviation, MAD）进行稳健光度归一：
+\begin{equation}
+  \widetilde I=\frac{I-\operatorname{median}(I)}{\operatorname{MAD}(I)+\epsilon},
+  \qquad
+  \widetilde R=\frac{R'-\operatorname{median}(R')}{\operatorname{MAD}(R')+\epsilon}.
+  \label{eq:mad-normalization}
+\end{equation}
+中位数削弱整体亮度偏移，MAD 降低少量高亮反射和缺陷像素对尺度估计的影响。阶段 0 统计中，灰度值为 0 或 255 的像素占 $93.99\%$，说明 DeepPCB 接近二值图。本文仍保留光度归一，以处理 JPEG 灰度和待检图特有的强度变化，但不把后续效果归因于连续纹理建模。完整统计见第~\ref{sec:experiments} 节。
+
+M1 同时输出配准质量分 $q_{\mathrm{reg}}\in[0,1]$。ECC 相关系数、ORB/RANSAC 内点率和边缘双向 Chamfer 距离描述几何质量。背景中位差和变换参数越界程度补充残差与参数约束。五类指标组成特征向量 $z^{\mathrm{reg}}$。背景中位差在剔除最高残差区域后计算。系统再用验证样本和合成错位样本校准映射
+\begin{equation}
+  q_{\mathrm{reg}}=g_{\mathrm{reg}}(z^{\mathrm{reg}}).
+  \label{eq:qreg}
+\end{equation}
+ECC 分支和回退分支由同一质量量纲进入后续模块。$q_{\mathrm{reg}}$ 作为复检门和接受门的输入，也作为配准质量安全开关。低于阈值时，系统停止执行依赖模板的修改并回退到检测器输出。阶段 E 只支持 $q_{\mathrm{reg}}$ 对选定平移强度序列呈下降趋势。在本实验的扰动范围内，配准质量阈值拦截的有害动作数为 0，其保护作用尚未得到实证。完整负面结果见第~\ref{sec:experiments} 节。
+
+\subsection{外观差异与拓扑差异（M2、M3）}
+\label{subsec:appearance-topology}
+
+配准和归一后的图像进入两条差异计算路径。外观路径关注材料强度的增减，拓扑路径关注铜线连通关系的改变。二者负责形成差异候选和数值特征，不作为多模态验证器的直接视觉输入。
+
+外观差异由逐像素绝对差和结构相似性残差加权得到：
+\begin{align}
+  M_{\mathrm{pix}} &= \operatorname{Norm}\bigl(|\widetilde I-\widetilde R|\bigr), \\
+  M_{\mathrm{ssim}} &= \frac{1-\operatorname{SSIM}(\widetilde I,\widetilde R)}{2}, \\
+  M_{\mathrm{app}} &= \eta_1 M_{\mathrm{pix}}+\eta_2 M_{\mathrm{ssim}}.
+  \label{eq:appearance-map}
+\end{align}
+绝对差对局部铜缺失、额外铜和孔洞变化响应直接，SSIM 残差补充邻域结构与对比度变化。权重 $\eta_1$、$\eta_2$ 只在验证折选择，不在测试折调节。主数据接近二值，$M_{\mathrm{pix}}$ 已包含材料边界信号。SSIM 残差将孤立的强度响应组织为局部结构响应，不用于提取自然图像纹理。
+
+拓扑路径先对当前图和对齐模板执行 Otsu 阈值分割。轻量开闭运算清除孤立噪点和小孔，得到铜区域掩码 $B_I$ 与 $B_R$，再骨架化为 $K_I$ 与 $K_R$。若直接计算 $K_I\mathbin{\mathrm{XOR}}K_R$，不足一个线宽的配准残差也会沿整条线路产生两条平行伪差异。本文在比较前对对方骨架作半径为 $\delta$ 的膨胀，定义容差感知 XOR：
+\begin{equation}
+  M_{\mathrm{topo}}=
+  \bigl(K_I\land\neg\operatorname{Dilate}(K_R,\delta)\bigr)
+  \lor
+  \bigl(K_R\land\neg\operatorname{Dilate}(K_I,\delta)\bigr).
+  \label{eq:tolerant-xor}
+\end{equation}
+式~\eqref{eq:tolerant-xor} 只保留在对方骨架的 $\delta$ 邻域中无法找到对应点的结构变化。真实断路、桥接和支路增生仍会保留，轻微横向漂移造成的成对边缘响应则被吸收。容差不是单纯的图像平滑，它显式编码“在允许位置误差内视为同一条线路”的匹配关系。
+
+阶段 E 的实测支持容差 XOR 设计。其漏检恢复率为 $23.62\%$，并同时降低正常区域的伪差异。该结果不支持“仅靠扩大异常区域换取召回”的解释。完整对照见第~\ref{sec:experiments} 节。
+
+对每个候选区域，M3 还计算八维局部拓扑向量
+\begin{equation}
+  t_i=[\Delta n_{cc},\Delta n_{end},\Delta n_{branch},\Delta\chi,
+  \Delta L,r_{xor},\Delta A,\Delta P],
+  \label{eq:topology-vector}
+\end{equation}
+其中 $n_{cc}$ 为连通分量数量，$n_{end}$ 为骨架端点数量。$n_{branch}$ 为分叉点数量，$\chi$ 为 Euler 数。$L$ 为骨架长度，$r_{xor}$ 为容差 XOR 占比。$A$ 和 $P$ 为铜区域面积与轮廓周长。各差值均在当前区域和模板同坐标区域之间计算。该向量不充当六类缺陷的硬规则分类器，而以连续特征描述结构变化。阶段 B2 否定了把拓扑图直接放入证据卡的做法，但没有检验该向量作为门控特征的独立增量。
+
+\subsection{差异候选生成（M4）}
+\label{subsec:diff-candidates}
+
+M4 将连续差异图转换为有限数量的候选。阈值估计的关键是限定正常区域，而不是对含缺陷的整图直接取高分位数。设训练折或验证折中的非缺陷像素集合为 $\Omega_N$，外观阈值定义为
+\begin{equation}
+  \tau_{\mathrm{app}}=Q_{1-\alpha}
+  \left(M_{\mathrm{app}}(x)\mid x\in\Omega_N\right),
+  \label{eq:normal-quantile}
+\end{equation}
+并以相同原则确定拓扑差异阈值。整图分位数会把缺陷像素纳入“正常残差”经验分布。缺陷面积或残差增大时，高分位阈值也会升高，真实响应可能落到阈值以下。早期故障诊断表明，整图分位数会抬高阈值。改用正常区域估计后，前序配置在 IoU 为 0.3 时的漏检恢复候选率为 $0.318$。该结果支持按正常区域估计阈值，完整诊断见第~\ref{sec:experiments} 节。
+
+外观和拓扑二值响应采用逻辑或合并：
+\begin{equation}
+  M_{\mathrm{bin}}=
+  \mathbf{1}[M_{\mathrm{app}}>\tau_{\mathrm{app}}]
+  \lor
+  \mathbf{1}[M_{\mathrm{topo}}>\tau_{\mathrm{topo}}].
+  \label{eq:candidate-mask}
+\end{equation}
+随后执行开运算、闭运算和孔洞填充，再提取连通域。面积上下界和形状约束作用于连通域掩码，外接框只用于匹配与裁剪。连通域面积指差异响应像素数，外接框面积指包围这些像素的矩形面积。DeepPCB 的最小面积标注框为 $20\times20$ px，后者为 $400$ px$^2$。若把连通域面积下界也设为 400，稀疏响应会过滤掉小缺陷。阶段 A 因而将该下界降至 150；对应的 IoU 0.3 召回极差贡献为 $0.328$。完整调参结果见第~\ref{sec:experiments} 节。
+
+阶段 A 在检测器未参与训练的 val 折完成参数扫描，避免检测器训练样本进入漏检分母。推荐配置的 IoU 0.3 漏检恢复候选率为 $0.625$。实测支持差异路径用于提出漏检候选，也显示后续仍需由复检门控制调用成本。完整扫描见第~\ref{sec:experiments} 节。
+
+参数扫描以搜索范围内的 IoU 0.3 召回极差衡量敏感性。阈值估计的影响最大，极差为 $0.524$；面积下界次之。该排序与整图分位数抬高阈值、连通域面积不同于外接框面积两项分析一致。完整因素排序见第~\ref{sec:experiments} 节。
+
+每个差异候选保留三组扩展属性。外观属性包括残差均值、最大值、高分位数和超阈值面积占比。拓扑属性包括 XOR 面积和式~\eqref{eq:topology-vector} 的局部向量。融合与质量属性包括检测框重叠关系和 $q_{\mathrm{reg}}$。这些属性用于候选融合，也作为第 5 章复检门的输入。它们扩展了式~\eqref{eq:cdiff} 的最小记录结构。
+
+\subsection{候选融合（M5）}
+\label{subsec:candidate-fusion}
+
+设基础检测器候选为 $C_{\mathrm{det}}$，差异候选为 $C_{\mathrm{diff}}$。M5 在二者之间构图。一对框的 IoU 不小于 $0.3$ 时连接对应节点；一个框的中心落入另一个按局部尺度扩张后的框时也建立连接。连通节点聚为统一候选，并标记为 \texttt{DET}、\texttt{DIFF} 或 \texttt{BOTH}。IoU 阈值与漏检候选召回的评价口径一致。中心点规则用于处理位置一致但重叠较小的细长差异连通域。
+
+融合记录同时保留检测器原框、差异外接框和融合上下文框。多模态验证器查看覆盖两种来源的融合区域。\texttt{keep}、\texttt{relabel} 和 \texttt{remove} 始终作用于检测器原框，避免上下文扩张改变定位。\texttt{BOTH} 已包含检测器框，因此不允许执行 \texttt{add}。若检测框与差异框的 IoU 小于 $0.1$，系统将其拆回两个独立候选。二者随后分别进入 \texttt{DET} 与 \texttt{DIFF} 流程。该规则防止空间一致性不足的候选获得双来源标记。（融合阈值与动作约束来源：开发规格书第 3.6 节。）
+
+三类来源承担不同职责。\texttt{DET} 保留检测器类别和校准置信度，覆盖正确检测、误报和错分类。\texttt{DIFF} 不携带检测类别，用于提出潜在漏检位置。\texttt{BOTH} 表示检测语义与模板变化在空间上相互支持。融合只建立候选级对应关系，不决定最终动作。
+
+\subsection{证据卡（M7）}
+\label{subsec:evidence-card}
+
+M7 采用 A2 三面板证据卡，不采用被否定的 A6 六面板配置。P1 是当前待检图的候选紧裁剪。P2 是配准后正常模板在相同坐标和尺度下的紧裁剪。P3 是带候选位置标记的更大上下文。P1 与 P2 支持当前位置的直接比较，P3 保留线路走向和相邻焊盘关系。三个面板保持固定次序、坐标对应和显示范围。
+
+证据分辨率由缺陷尺度决定。阶段 0 统计给出的框宽和框高中位数分别为 35 px 与 33 px。P1 和 P2 使用相同插值方式与几何尺度，上采样到 $256\times256$。P3 使用更大的原图上下文，并标记候选位置。上采样只改善显示尺度，不创造新结构。完整尺度统计见第~\ref{sec:experiments} 节。
+
+外观差异图和拓扑差异图最终不进入证据卡。阶段 C 的 200 候选主消融中，A4 的存在性 F1 为 $0.7571$，略高于 A2 的 $0.7553$。该差异落在置信区间内，未证明拓扑图相对 A2 带来增量。阶段 C 的其余附加差异证据同样没有证明稳定增量。完整主消融见第~\ref{sec:experiments} 节。
+
+阶段 B2 采用不同的专门对照设置。该实验固定候选、提示词骨架和解码设置，共进行 450 次对照。A2 为 $0.8082$，高于全部包含外观图、拓扑图或数值拓扑摘要的变体。该结果支持从最终证据卡中移除显式差异视觉输入。阶段 C 回答主消融中的增量是否成立，阶段 B2 检查专门构造的差异证据变体。两组数值不合并比较。
+
+阶段 B2 还检查了渲染尺度和候选来源两项混淆因素。$M_{\mathrm{app}}$ 固定截断到 $[0,1]$ 并使用固定色标，拓扑图采用固定三色映射，因此不存在逐图自动拉伸。按 \texttt{DET}、\texttt{DIFF} 和 \texttt{BOTH} 分别统计时，加入外观差异图的 A3 均低于 A2。固定渲染排除了显示尺度漂移，分来源比较削弱了配准残差污染这一解释。现有结果只支持“显式差异视觉输入未带来稳定增量”，不对注意力分散等机制原因作推断。
+
+这项负面结论不否定 M2 和 M3 的候选生成作用。阶段 A 的候选召回实测支持漏检候选生成。阶段 E 的容差 XOR 实测支持结构伪差异抑制，详见第~\ref{sec:experiments} 节。本文据此重新划分信息流。A2 三面板证据卡是多模态验证器的视觉输入。外观残差统计、八维拓扑向量和 $q_{\mathrm{reg}}$ 是复检门与接受门的结构化特征。第 5 章说明门控中的具体使用方式。

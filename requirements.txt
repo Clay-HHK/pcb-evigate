@@ -1,0 +1,18 @@
+# Direct dependencies, pinned to the versions used for all reported results.
+# Full transitive lock: requirements-lock.txt / environment.yml
+--extra-index-url https://download.pytorch.org/whl/cu124
+torch==2.6.0+cu124
+torchvision==0.21.0+cu124
+ultralytics==8.4.117
+transformers==4.55.4
+safetensors==0.8.0
+numpy==2.4.6
+scipy==1.17.1
+scikit-learn==1.9.0
+lightgbm==4.7.0
+opencv-python==5.0.0.93
+scikit-image==0.26.0
+pandas==3.0.5
+matplotlib==3.11.1
+pillow==12.3.0
+pyyaml==6.0.3

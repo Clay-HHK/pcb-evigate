@@ -1,0 +1,4 @@
+otsu_block: 3
+morphology_kernel: 3
+tolerance_px: 2
+

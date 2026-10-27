@@ -1,0 +1,478 @@
+{
+  "passed": true,
+  "backend": "codex_cli",
+  "candidate_evaluations": 20,
+  "counts_by_arm": {
+    "A0": 3,
+    "A1": 3,
+    "A2": 3,
+    "A3": 3,
+    "A4": 2,
+    "A5": 2,
+    "A6": 2,
+    "A6_label_aware": 2
+  },
+  "elapsed_seconds": 224.65560827823356,
+  "responses": [
+    {
+      "arm": "A0",
+      "pair_id": "20085000",
+      "candidate_id": "20085000_d00",
+      "key": "20085000_20085000_d00__A0__gpt-5.6-sol__t0",
+      "result": {
+        "defect_present": true,
+        "predicted_class": "spur",
+        "reference_reliability": null,
+        "appearance_pattern": [
+          "extra_material"
+        ],
+        "topology_pattern": [
+          "extra_branch",
+          "more_endpoints"
+        ],
+        "evidence_strength": 2,
+        "reason_codes": [
+          "A_EXTRA",
+          "T_BRANCH"
+        ]
+      },
+      "latency_seconds": 20.704033434856683
+    },
+    {
+      "arm": "A0",
+      "pair_id": "20085000",
+      "candidate_id": "20085000_x04",
+      "key": "20085000_20085000_x04__A0__gpt-5.6-sol__t0",
+      "result": {
+        "defect_present": null,
+        "predicted_class": "uncertain",
+        "reference_reliability": null,
+        "appearance_pattern": [
+          "uncertain"
+        ],
+        "topology_pattern": [
+          "uncertain"
+        ],
+        "evidence_strength": 0,
+        "reason_codes": [
+          "NO_SUPPORT"
+        ]
+      },
+      "latency_seconds": 15.716875403188169
+    },
+    {
+      "arm": "A0",
+      "pair_id": "20085001",
+      "candidate_id": "20085001_d07",
+      "key": "20085001_20085001_d07__A0__gpt-5.6-sol__t0",
+      "result": {
+        "defect_present": true,
+        "predicted_class": "spur",
+        "reference_reliability": null,
+        "appearance_pattern": [
+          "extra_material"
+        ],
+        "topology_pattern": [
+          "extra_branch",
+          "more_endpoints"
+        ],
+        "evidence_strength": 2,
+        "reason_codes": [
+          "A_EXTRA",
+          "T_BRANCH"
+        ]
+      },
+      "latency_seconds": 18.8204731810838
+    },
+    {
+      "arm": "A1",
+      "pair_id": "20085000",
+      "candidate_id": "20085000_b01",
+      "key": "20085000_20085000_b01__A1__gpt-5.6-sol__t0",
+      "result": {
+        "defect_present": null,
+        "predicted_class": "uncertain",
+        "reference_reliability": null,
+        "appearance_pattern": [
+          "uncertain"
+        ],
+        "topology_pattern": [
+          "uncertain"
+        ],
+        "evidence_strength": 0,
+        "reason_codes": [
+          "NO_SUPPORT"
+        ]
+      },
+      "latency_seconds": 31.40694169420749
+    },
+    {
+      "arm": "A1",
+      "pair_id": "20085001",
+      "candidate_id": "20085001_d00",
+      "key": "20085001_20085001_d00__A1__gpt-5.6-sol__t0",
+      "result": {
+        "defect_present": null,
+        "predicted_class": "uncertain",
+        "reference_reliability": null,
+        "appearance_pattern": [
+          "uncertain"
+        ],
+        "topology_pattern": [
+          "uncertain"
+        ],
+        "evidence_strength": 0,
+        "reason_codes": [
+          "NO_SUPPORT"
+        ]
+      },
+      "latency_seconds": 25.534733385778964
+    },
+    {
+      "arm": "A1",
+      "pair_id": "20085001",
+      "candidate_id": "20085001_d08",
+      "key": "20085001_20085001_d08__A1__gpt-5.6-sol__t0",
+      "result": {
+        "defect_present": true,
+        "predicted_class": "spur",
+        "reference_reliability": null,
+        "appearance_pattern": [
+          "extra_material"
+        ],
+        "topology_pattern": [
+          "extra_branch",
+          "more_endpoints"
+        ],
+        "evidence_strength": 2,
+        "reason_codes": [
+          "A_EXTRA",
+          "T_BRANCH"
+        ]
+      },
+      "latency_seconds": 25.65209996374324
+    },
+    {
+      "arm": "A2",
+      "pair_id": "20085000",
+      "candidate_id": "20085000_d02",
+      "key": "20085000_20085000_d02__A2__gpt-5.6-sol__t0",
+      "result": {
+        "defect_present": true,
+        "predicted_class": "spurious_copper",
+        "reference_reliability": null,
+        "appearance_pattern": [
+          "extra_material"
+        ],
+        "topology_pattern": [
+          "new_component"
+        ],
+        "evidence_strength": 3,
+        "reason_codes": [
+          "A_EXTRA",
+          "T_COMPONENT"
+        ]
+      },
+      "latency_seconds": 15.73237729119137
+    },
+    {
+      "arm": "A2",
+      "pair_id": "20085001",
+      "candidate_id": "20085001_d01",
+      "key": "20085001_20085001_d01__A2__gpt-5.6-sol__t0",
+      "result": {
+        "defect_present": true,
+        "predicted_class": "spurious_copper",
+        "reference_reliability": null,
+        "appearance_pattern": [
+          "extra_material"
+        ],
+        "topology_pattern": [
+          "new_component"
+        ],
+        "evidence_strength": 3,
+        "reason_codes": [
+          "A_EXTRA",
+          "T_COMPONENT"
+        ]
+      },
+      "latency_seconds": 22.974455527961254
+    },
+    {
+      "arm": "A2",
+      "pair_id": "20085001",
+      "candidate_id": "20085001_x00",
+      "key": "20085001_20085001_x00__A2__gpt-5.6-sol__t0",
+      "result": {
+        "defect_present": false,
+        "predicted_class": "normal",
+        "reference_reliability": null,
+        "appearance_pattern": [
+          "none"
+        ],
+        "topology_pattern": [
+          "none"
+        ],
+        "evidence_strength": 2,
+        "reason_codes": [
+          "NO_SUPPORT"
+        ]
+      },
+      "latency_seconds": 20.11748779984191
+    },
+    {
+      "arm": "A3",
+      "pair_id": "20085000",
+      "candidate_id": "20085000_d03",
+      "key": "20085000_20085000_d03__A3__gpt-5.6-sol__t0",
+      "result": {
+        "defect_present": true,
+        "predicted_class": "mousebite",
+        "reference_reliability": "medium",
+        "appearance_pattern": [
+          "missing_material",
+          "edge_notch"
+        ],
+        "topology_pattern": [
+          "none"
+        ],
+        "evidence_strength": 3,
+        "reason_codes": [
+          "A_MISSING",
+          "A_NOTCH"
+        ]
+      },
+      "latency_seconds": 23.605209522880614
+    },
+    {
+      "arm": "A3",
+      "pair_id": "20085001",
+      "candidate_id": "20085001_d02",
+      "key": "20085001_20085001_d02__A3__gpt-5.6-sol__t0",
+      "result": {
+        "defect_present": null,
+        "predicted_class": "uncertain",
+        "reference_reliability": "low",
+        "appearance_pattern": [
+          "uncertain"
+        ],
+        "topology_pattern": [
+          "uncertain"
+        ],
+        "evidence_strength": 1,
+        "reason_codes": [
+          "REF_BAD",
+          "NO_SUPPORT"
+        ]
+      },
+      "latency_seconds": 28.683775064069778
+    },
+    {
+      "arm": "A3",
+      "pair_id": "20085001",
+      "candidate_id": "20085001_x01",
+      "key": "20085001_20085001_x01__A3__gpt-5.6-sol__t0",
+      "result": {
+        "defect_present": true,
+        "predicted_class": "mousebite",
+        "reference_reliability": "high",
+        "appearance_pattern": [
+          "missing_material",
+          "edge_notch"
+        ],
+        "topology_pattern": [
+          "none"
+        ],
+        "evidence_strength": 3,
+        "reason_codes": [
+          "A_MISSING",
+          "A_NOTCH"
+        ]
+      },
+      "latency_seconds": 29.706683196127415
+    },
+    {
+      "arm": "A4",
+      "pair_id": "20085000",
+      "candidate_id": "20085000_d04",
+      "key": "20085000_20085000_d04__A4__gpt-5.6-sol__t0",
+      "result": {
+        "defect_present": true,
+        "predicted_class": "mousebite",
+        "reference_reliability": "high",
+        "appearance_pattern": [
+          "missing_material",
+          "edge_notch"
+        ],
+        "topology_pattern": [
+          "none"
+        ],
+        "evidence_strength": 3,
+        "reason_codes": [
+          "A_MISSING",
+          "A_NOTCH"
+        ]
+      },
+      "latency_seconds": 32.615059613250196
+    },
+    {
+      "arm": "A4",
+      "pair_id": "20085001",
+      "candidate_id": "20085001_d03",
+      "key": "20085001_20085001_d03__A4__gpt-5.6-sol__t0",
+      "result": {
+        "defect_present": true,
+        "predicted_class": "spur",
+        "reference_reliability": "high",
+        "appearance_pattern": [
+          "extra_material"
+        ],
+        "topology_pattern": [
+          "extra_branch"
+        ],
+        "evidence_strength": 3,
+        "reason_codes": [
+          "A_EXTRA",
+          "T_BRANCH"
+        ]
+      },
+      "latency_seconds": 30.10199692333117
+    },
+    {
+      "arm": "A5",
+      "pair_id": "20085000",
+      "candidate_id": "20085000_x00",
+      "key": "20085000_20085000_x00__A5__gpt-5.6-sol__t0",
+      "result": {
+        "defect_present": true,
+        "predicted_class": "pinhole",
+        "reference_reliability": "medium",
+        "appearance_pattern": [
+          "internal_void"
+        ],
+        "topology_pattern": [
+          "hole_change"
+        ],
+        "evidence_strength": 3,
+        "reason_codes": [
+          "A_VOID",
+          "T_HOLE"
+        ]
+      },
+      "latency_seconds": 30.471831856295466
+    },
+    {
+      "arm": "A5",
+      "pair_id": "20085001",
+      "candidate_id": "20085001_d04",
+      "key": "20085001_20085001_d04__A5__gpt-5.6-sol__t0",
+      "result": {
+        "defect_present": null,
+        "predicted_class": "uncertain",
+        "reference_reliability": "low",
+        "appearance_pattern": [
+          "uncertain"
+        ],
+        "topology_pattern": [
+          "uncertain"
+        ],
+        "evidence_strength": 0,
+        "reason_codes": [
+          "REF_BAD",
+          "NO_SUPPORT"
+        ]
+      },
+      "latency_seconds": 23.65856937179342
+    },
+    {
+      "arm": "A6",
+      "pair_id": "20085000",
+      "candidate_id": "20085000_x02",
+      "key": "20085000_20085000_x02__A6__gpt-5.6-sol__t0",
+      "result": {
+        "defect_present": false,
+        "predicted_class": "normal",
+        "reference_reliability": "medium",
+        "appearance_pattern": [
+          "none"
+        ],
+        "topology_pattern": [
+          "none"
+        ],
+        "evidence_strength": 2,
+        "reason_codes": [
+          "NO_SUPPORT"
+        ]
+      },
+      "latency_seconds": 26.20668095489964
+    },
+    {
+      "arm": "A6",
+      "pair_id": "20085001",
+      "candidate_id": "20085001_b05",
+      "key": "20085001_20085001_b05__A6__gpt-5.6-sol__t0",
+      "result": {
+        "defect_present": true,
+        "predicted_class": "spur",
+        "reference_reliability": "high",
+        "appearance_pattern": [
+          "extra_material"
+        ],
+        "topology_pattern": [
+          "none"
+        ],
+        "evidence_strength": 2,
+        "reason_codes": [
+          "A_EXTRA"
+        ]
+      },
+      "latency_seconds": 34.813890950754285
+    },
+    {
+      "arm": "A6_label_aware",
+      "pair_id": "20085000",
+      "candidate_id": "20085000_x03",
+      "key": "20085000_20085000_x03__A6_label_aware__gpt-5.6-sol__t0",
+      "result": {
+        "defect_present": true,
+        "predicted_class": "mousebite",
+        "reference_reliability": "medium",
+        "appearance_pattern": [
+          "missing_material",
+          "edge_notch"
+        ],
+        "topology_pattern": [
+          "none"
+        ],
+        "evidence_strength": 3,
+        "reason_codes": [
+          "A_MISSING",
+          "A_NOTCH"
+        ]
+      },
+      "latency_seconds": 25.717190116178244
+    },
+    {
+      "arm": "A6_label_aware",
+      "pair_id": "20085001",
+      "candidate_id": "20085001_d06",
+      "key": "20085001_20085001_d06__A6_label_aware__gpt-5.6-sol__t0",
+      "result": {
+        "defect_present": true,
+        "predicted_class": "spurious_copper",
+        "reference_reliability": "high",
+        "appearance_pattern": [
+          "extra_material"
+        ],
+        "topology_pattern": [
+          "none"
+        ],
+        "evidence_strength": 3,
+        "reason_codes": [
+          "A_EXTRA"
+        ]
+      },
+      "latency_seconds": 23.0158440801315
+    }
+  ]
+}

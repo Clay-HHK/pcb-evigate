@@ -1,0 +1,12 @@
+path: cache/detector_dataset/fold1
+train: images/train
+val: images/val
+test: images/test
+nc: 6
+names:
+- open
+- short
+- mousebite
+- spur
+- copper
+- pinhole

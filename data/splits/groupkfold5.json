@@ -1,0 +1,97 @@
+{
+  "fold_0": {
+    "test": [
+      "group20085"
+    ],
+    "val": [
+      "group00041",
+      "group50600"
+    ],
+    "train": [
+      "group12000",
+      "group12100",
+      "group12300",
+      "group13000",
+      "group44000",
+      "group77000",
+      "group90100",
+      "group92000"
+    ]
+  },
+  "fold_1": {
+    "test": [
+      "group00041",
+      "group50600"
+    ],
+    "val": [
+      "group12300",
+      "group13000"
+    ],
+    "train": [
+      "group12000",
+      "group12100",
+      "group20085",
+      "group44000",
+      "group77000",
+      "group90100",
+      "group92000"
+    ]
+  },
+  "fold_2": {
+    "test": [
+      "group12300",
+      "group13000"
+    ],
+    "val": [
+      "group12000",
+      "group12100",
+      "group44000"
+    ],
+    "train": [
+      "group00041",
+      "group20085",
+      "group50600",
+      "group77000",
+      "group90100",
+      "group92000"
+    ]
+  },
+  "fold_3": {
+    "test": [
+      "group12000",
+      "group12100",
+      "group44000"
+    ],
+    "val": [
+      "group77000",
+      "group90100",
+      "group92000"
+    ],
+    "train": [
+      "group00041",
+      "group12300",
+      "group13000",
+      "group20085",
+      "group50600"
+    ]
+  },
+  "fold_4": {
+    "test": [
+      "group77000",
+      "group90100",
+      "group92000"
+    ],
+    "val": [
+      "group20085"
+    ],
+    "train": [
+      "group00041",
+      "group12000",
+      "group12100",
+      "group12300",
+      "group13000",
+      "group44000",
+      "group50600"
+    ]
+  }
+}

@@ -1,0 +1,316 @@
+{
+  "seed": 20260811,
+  "fold": 0,
+  "candidates": 200,
+  "logistic": {
+    "threshold": 0.20830034633736214,
+    "calls": 0,
+    "accepted_actions": 0,
+    "precision": 0.9029883066262451,
+    "recall": 0.8587314662273476,
+    "f1": 0.8803039898670044,
+    "map50": 0.8295440385100282,
+    "map50_95": 0.5866895614938086,
+    "fpcr": 0.0,
+    "mdrr": 0.0,
+    "mcca": 0.0,
+    "tprr": 1.0,
+    "hcr": 0.0,
+    "action_precision": 0.0,
+    "action_recall": 0.0
+  },
+  "lightgbm": {
+    "threshold": 0.14590502328704363,
+    "calls": 3,
+    "accepted_actions": 0,
+    "precision": 0.9029883066262451,
+    "recall": 0.8587314662273476,
+    "f1": 0.8803039898670044,
+    "map50": 0.8295440385100282,
+    "map50_95": 0.5866895614938086,
+    "fpcr": 0.0,
+    "mdrr": 0.0,
+    "mcca": 0.0,
+    "tprr": 1.0,
+    "hcr": 0.0,
+    "action_precision": 0.0,
+    "action_recall": 0.0
+  },
+  "rows": [
+    {
+      "model": "Logistic",
+      "metric": "threshold",
+      "value": 0.20830034633736214
+    },
+    {
+      "model": "Logistic",
+      "metric": "calls",
+      "value": 0
+    },
+    {
+      "model": "Logistic",
+      "metric": "accepted_actions",
+      "value": 0
+    },
+    {
+      "model": "Logistic",
+      "metric": "precision",
+      "value": 0.9029883066262451
+    },
+    {
+      "model": "Logistic",
+      "metric": "recall",
+      "value": 0.8587314662273476
+    },
+    {
+      "model": "Logistic",
+      "metric": "f1",
+      "value": 0.8803039898670044
+    },
+    {
+      "model": "Logistic",
+      "metric": "map50",
+      "value": 0.8295440385100282
+    },
+    {
+      "model": "Logistic",
+      "metric": "map50_95",
+      "value": 0.5866895614938086
+    },
+    {
+      "model": "Logistic",
+      "metric": "fpcr",
+      "value": 0.0
+    },
+    {
+      "model": "Logistic",
+      "metric": "mdrr",
+      "value": 0.0
+    },
+    {
+      "model": "Logistic",
+      "metric": "mcca",
+      "value": 0.0
+    },
+    {
+      "model": "Logistic",
+      "metric": "tprr",
+      "value": 1.0
+    },
+    {
+      "model": "Logistic",
+      "metric": "hcr",
+      "value": 0.0
+    },
+    {
+      "model": "Logistic",
+      "metric": "action_precision",
+      "value": 0.0
+    },
+    {
+      "model": "Logistic",
+      "metric": "action_recall",
+      "value": 0.0
+    },
+    {
+      "model": "LightGBM",
+      "metric": "threshold",
+      "value": 0.14590502328704363
+    },
+    {
+      "model": "LightGBM",
+      "metric": "calls",
+      "value": 3
+    },
+    {
+      "model": "LightGBM",
+      "metric": "accepted_actions",
+      "value": 0
+    },
+    {
+      "model": "LightGBM",
+      "metric": "precision",
+      "value": 0.9029883066262451
+    },
+    {
+      "model": "LightGBM",
+      "metric": "recall",
+      "value": 0.8587314662273476
+    },
+    {
+      "model": "LightGBM",
+      "metric": "f1",
+      "value": 0.8803039898670044
+    },
+    {
+      "model": "LightGBM",
+      "metric": "map50",
+      "value": 0.8295440385100282
+    },
+    {
+      "model": "LightGBM",
+      "metric": "map50_95",
+      "value": 0.5866895614938086
+    },
+    {
+      "model": "LightGBM",
+      "metric": "fpcr",
+      "value": 0.0
+    },
+    {
+      "model": "LightGBM",
+      "metric": "mdrr",
+      "value": 0.0
+    },
+    {
+      "model": "LightGBM",
+      "metric": "mcca",
+      "value": 0.0
+    },
+    {
+      "model": "LightGBM",
+      "metric": "tprr",
+      "value": 1.0
+    },
+    {
+      "model": "LightGBM",
+      "metric": "hcr",
+      "value": 0.0
+    },
+    {
+      "model": "LightGBM",
+      "metric": "action_precision",
+      "value": 0.0
+    },
+    {
+      "model": "LightGBM",
+      "metric": "action_recall",
+      "value": 0.0
+    },
+    {
+      "model": "RT-DETR-R18 B1",
+      "metric": "precision",
+      "value": 0.6110283159463488
+    },
+    {
+      "model": "RT-DETR-R18 B1",
+      "metric": "recall",
+      "value": 0.6754530477759473
+    },
+    {
+      "model": "RT-DETR-R18 B1",
+      "metric": "f1",
+      "value": 0.6416275430359937
+    },
+    {
+      "model": "RT-DETR-R18 B1",
+      "metric": "map50",
+      "value": 0.6483026856479456
+    },
+    {
+      "model": "RT-DETR-R18 B1",
+      "metric": "map50_95",
+      "value": 0.4576670997334857
+    },
+    {
+      "model": "RT-DETR-R18 Full",
+      "metric": "precision",
+      "value": 0.6110283159463488
+    },
+    {
+      "model": "RT-DETR-R18 Full",
+      "metric": "recall",
+      "value": 0.6754530477759473
+    },
+    {
+      "model": "RT-DETR-R18 Full",
+      "metric": "f1",
+      "value": 0.6416275430359937
+    },
+    {
+      "model": "RT-DETR-R18 Full",
+      "metric": "map50",
+      "value": 0.6483026856479456
+    },
+    {
+      "model": "RT-DETR-R18 Full",
+      "metric": "map50_95",
+      "value": 0.4576670997334857
+    },
+    {
+      "model": "RT-DETR-R18 Full",
+      "metric": "hcr",
+      "value": 0.0
+    },
+    {
+      "model": "RT-DETR-R18 Full",
+      "metric": "calls",
+      "value": 12
+    },
+    {
+      "model": "RT-DETR-R18 Full",
+      "metric": "accepted_actions",
+      "value": 0
+    }
+  ],
+  "report": "门控替换严格限制在 fold0 的 200 个比例分层候选上。Logistic 的验证阈值为 0.208300，调用 0 次，最终 F1=0.8803，HCR=0.0000。LightGBM 的验证阈值为 0.145905，调用 3 次，最终 F1=0.8803，HCR=0.0000。 检测器替换使用官方 PekingU RT-DETR-R18VD，在 fold0 训练后对全部 test 图像预测，并仅对 200 个比例分层候选调用 A2 Codex。RT-DETR-R18 基线 F1=0.6416，mAP@0.5=0.6483；完整流程 F1=0.6416，HCR=0.0000，门控实际调用=12。",
+  "rtdetr_r18": {
+    "baseline": {
+      "precision": 0.6110283159463488,
+      "recall": 0.6754530477759473,
+      "f1": 0.6416275430359937,
+      "map50": 0.6483026856479456,
+      "map50_95": 0.4576670997334857,
+      "per_class_ap50": {
+        "0": 0.8030968319781712,
+        "1": 0.6565512158325418,
+        "2": 0.2771491434857772,
+        "3": 0.5117275702185681,
+        "4": 0.7924834938411012,
+        "5": 0.8488078585315135
+      },
+      "per_class_ap50_95": {
+        "0": 0.39482950597400734,
+        "1": 0.4134359523292517,
+        "2": 0.18420511160634873,
+        "3": 0.3508436493269601,
+        "4": 0.7165876863696471,
+        "5": 0.6861006927946991
+      }
+    },
+    "full": {
+      "precision": 0.6110283159463488,
+      "recall": 0.6754530477759473,
+      "f1": 0.6416275430359937,
+      "map50": 0.6483026856479456,
+      "map50_95": 0.4576670997334857,
+      "per_class_ap50": {
+        "0": 0.8030968319781712,
+        "1": 0.6565512158325418,
+        "2": 0.2771491434857772,
+        "3": 0.5117275702185681,
+        "4": 0.7924834938411012,
+        "5": 0.8488078585315135
+      },
+      "per_class_ap50_95": {
+        "0": 0.39482950597400734,
+        "1": 0.4134359523292517,
+        "2": 0.18420511160634873,
+        "3": 0.3508436493269601,
+        "4": 0.7165876863696471,
+        "5": 0.6861006927946991
+      },
+      "fpcr": 0.0,
+      "mdrr": 0.0,
+      "mcca": 0.0,
+      "tprr": 1.0,
+      "hcr": 0.0,
+      "action_precision": 0.0,
+      "action_recall": 0.0,
+      "calls": 12,
+      "accepted_actions": 0
+    },
+    "sample_candidates": 200,
+    "all_candidates": 14719
+  }
+}

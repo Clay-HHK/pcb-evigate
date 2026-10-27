@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "defect_present": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "predicted_class": {
+      "enum": [
+        "open",
+        "short",
+        "mousebite",
+        "spur",
+        "pinhole",
+        "spurious_copper",
+        "normal",
+        "uncertain"
+      ]
+    },
+    "reference_reliability": {
+      "enum": [
+        "high",
+        "medium",
+        "low",
+        null
+      ]
+    },
+    "appearance_pattern": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "missing_material",
+          "extra_material",
+          "edge_notch",
+          "internal_void",
+          "none",
+          "uncertain"
+        ]
+      }
+    },
+    "topology_pattern": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "disconnection",
+          "new_connection",
+          "extra_branch",
+          "more_endpoints",
+          "new_component",
+          "hole_change",
+          "none",
+          "uncertain"
+        ]
+      }
+    },
+    "evidence_strength": {
+      "type": "integer",
+      "enum": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "reason_codes": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "A_MISSING",
+          "A_EXTRA",
+          "A_NOTCH",
+          "A_VOID",
+          "T_BREAK",
+          "T_BRIDGE",
+          "T_BRANCH",
+          "T_COMPONENT",
+          "T_HOLE",
+          "REF_BAD",
+          "NO_SUPPORT"
+        ]
+      }
+    }
+  },
+  "required": [
+    "defect_present",
+    "predicted_class",
+    "reference_reliability",
+    "appearance_pattern",
+    "topology_pattern",
+    "evidence_strength",
+    "reason_codes"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,7 @@
+backend: openai_compatible
+model: qwen-vl-max
+base_url: https://dashscope.aliyuncs.com/compatible-mode/v1
+api_key_env: DASHSCOPE_API_KEY
+temperature: 0
+workers: 4
+cache_file: cache/mllm_outputs/openai_compatible.jsonl

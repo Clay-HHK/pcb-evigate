@@ -1,0 +1,12 @@
+model: yolov8s.pt
+epochs: 100
+imgsz: 640
+batch: -1
+device: 0
+workers: 4
+patience: 50
+project: cache/detector_runs
+seed: 20260811
+conf: 0.001
+iou: 0.7
+

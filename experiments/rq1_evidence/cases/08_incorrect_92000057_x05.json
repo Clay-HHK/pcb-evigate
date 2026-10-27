@@ -1,0 +1,24 @@
+{
+  "verdict": "incorrect",
+  "candidate_type": "original_miss",
+  "source": "DIFF",
+  "true_defect_present": true,
+  "true_class": "short",
+  "model_output": {
+    "defect_present": true,
+    "predicted_class": "open",
+    "reference_reliability": "high",
+    "appearance_pattern": [
+      "missing_material"
+    ],
+    "topology_pattern": [
+      "disconnection",
+      "more_endpoints"
+    ],
+    "evidence_strength": 3,
+    "reason_codes": [
+      "A_MISSING",
+      "T_BREAK"
+    ]
+  }
+}
