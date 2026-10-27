@@ -28,10 +28,19 @@ git 仓库里没有模型权重和 DeepPCB 原始图像，这两部分放在 [Re
 
 | Release 附件 | 内容 | 大小 |
 |---|---|---|
-| `pcb-evigate-full-v1.0.zip` | 完整复现包：本仓库全部内容，外加权重和 DeepPCB 数据 | 约 450 MB |
-| `pcb-evigate-weights-v1.0.zip` | 只含权重：五折 YOLOv8s `best.pt`、RT-DETR-R18 fold0、`yolov8s.pt` 预训练权重 | 约 200 MB |
+| `pcb-evigate-full-v1.0.zip.part00` 到 `part04` | 完整复现包：本仓库全部内容，外加权重和 DeepPCB 数据 | 约 450 MB |
+| `pcb-evigate-weights-v1.0.zip.part00` 到 `part01` | 只含权重：五折 YOLOv8s `best.pt`、RT-DETR-R18 fold0、`yolov8s.pt` 预训练权重 | 约 200 MB |
+| `SHA256SUMS.txt` | 两个合并后 zip 的校验和 | |
 
-**方式 A：下载完整包（推荐）**
+两个 zip 都按 95 MB 切成分片上传。下载全部分片后，先合并再校验：
+
+```bash
+cat pcb-evigate-full-v1.0.zip.part* > pcb-evigate-full-v1.0.zip
+cat pcb-evigate-weights-v1.0.zip.part* > pcb-evigate-weights-v1.0.zip
+sha256sum -c SHA256SUMS.txt
+```
+
+**方式 A：使用完整包（推荐）**
 
 ```bash
 unzip pcb-evigate-full-v1.0.zip && cd pcb-evigate
